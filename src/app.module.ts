@@ -7,6 +7,8 @@ import { TaskModule } from './task/task.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Project } from './projects/entities/project.entity';
 import { Task } from './task/entities/task.entity';
+import { ResearcherModule } from './researcher/researcher.module';
+import { Researcher } from './researcher/entities/researcher.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -16,10 +18,10 @@ import { Task } from './task/entities/task.entity';
     username: 'postgres',
     password: 'password',
     database: 'project-tracker',
-    entities: [Project, Task],
+    entities: [Project, Task, Researcher],
     synchronize: true,
   }),
-    AuthModule, ProjectsModule, TaskModule],
+    AuthModule, ProjectsModule, TaskModule, ResearcherModule],
   controllers: [AppController],
   providers: [AppService],
 })

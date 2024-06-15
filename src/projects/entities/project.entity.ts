@@ -1,6 +1,7 @@
 // entities/project.entity.ts
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable } from 'typeorm';
 import { Task } from '../../task/entities/task.entity';
+import { Researcher } from '../../researcher/entities/researcher.entity';
 
 @Entity()
 export class Project {
@@ -28,5 +29,9 @@ export class Project {
   @Column('simple-array', { nullable: true })
   @OneToMany(() => Task, (task) => task.project)
   tasks: Task[];
+
+  @ManyToMany(() => Researcher, (researcher) => researcher.projects)
+  @JoinTable()
+  researchers: Researcher[] | null;
 }
 

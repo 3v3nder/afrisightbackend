@@ -35,6 +35,11 @@ export class ProjectsService {
     return this.projectRepository.save(project);
   }
 
+  async updatenormal(id: number, updatedProject: UpdateProjectDto) {
+    const update = await this.projectRepository.update(id, updatedProject);
+    return update;
+  }
+
   async remove(id: number) {
     const deletion = await this.projectRepository.delete(id);
     return deletion

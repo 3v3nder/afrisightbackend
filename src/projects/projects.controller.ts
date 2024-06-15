@@ -22,9 +22,14 @@ export class ProjectsController {
     return this.projectsService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Patch('/status/:id')
   update(@Param('id') id: string, @Body() updateProjectDto: UpdateProjectDto) {
     return this.projectsService.update(+id, updateProjectDto);
+  }
+
+  @Patch(':id')
+  updatenormal(@Param('id') id: string, @Body() updateProjectDto: UpdateProjectDto) {
+    return this.projectsService.updatenormal(+id, updateProjectDto);
   }
 
   @Delete(':id')

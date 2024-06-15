@@ -28,6 +28,35 @@
 
 ## Installation
 
+After Cloning the Repo, Install Nest CLI by running the command
+
+Download and Install Postgresql
+The link: https://www.postgresql.org/ 
+
+You then create a database and name it as below: 
+
+```bash
+imports: [TypeOrmModule.forRoot({
+    type: 'postgres',
+    host: 'localhost',
+    port: 5432,
+    username: 'postgres',
+    password: 'xxxxxxxx',
+    database: 'project-tracker',
+    entities: [Project, Task],
+    synchronize: true,
+  }),
+  ```
+
+Configure the app.module.ts as above 
+
+```bash
+$ npm install -g @nestjs/cli
+```
+
+Then install the node modules
+
+
 ```bash
 $ npm install
 ```
@@ -45,18 +74,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
 
 ## Support
 

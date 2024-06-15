@@ -33,5 +33,13 @@ export class CreateProjectDto {
 
   @IsArray()
   @ArrayMinSize(1)
+  @ApiProperty({type:Array, description:'text'})
   researchFindings: string[];
+
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  @ApiProperty({type:Array, description:'text'})
+  researcherNames: string[];
+  
 }

@@ -27,6 +27,7 @@ export class Task {
 
   @ManyToOne(() => Project, (project) => project.id)
   project: Project;
+  
 }   
 
 

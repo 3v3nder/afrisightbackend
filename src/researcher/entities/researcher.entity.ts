@@ -1,4 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
+
+
+// entities/project.entity.ts
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, ManyToOne, JoinTable } from 'typeorm';
 import { Project } from '../../projects/entities/project.entity';
 
 @Entity()
@@ -9,9 +12,6 @@ export class Researcher {
   @Column()
   name: string;
 
-  @Column()
-  email: string;
 
-  @ManyToMany(() => Project, (project) => project.id)
-  projects: Project[];
 }
+

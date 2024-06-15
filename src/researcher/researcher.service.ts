@@ -6,44 +6,34 @@ import { Repository } from 'typeorm';
 import { Researcher } from './entities/researcher.entity';
 import { ResearcherRepository } from './researcher.repository';
 
+
 @Injectable()
 export class ResearcherService {
+
   constructor(
     @InjectRepository(ResearcherRepository)
-    private researcherRepository: ResearcherRepository,
+    private researchRepository: ResearcherRepository,
     ) {}
 
   create(createResearcherDto: CreateResearcherDto) {
-    return this.researcherRepository.save(createResearcherDto);
+    return this.researchRepository.save(createResearcherDto);
   }
 
-  findAll() : Promise<Researcher[]> {
-    return this.researcherRepository.find();
-  }
+  findAll(): Promise<Researcher[]> {
+    return this.researchRepository.find();
+    }
 
   findOne(id: number) {
     return `This action returns a #${id} researcher`;
   }
 
-  // findAllByProjectId(projectId: number): Promise<Researcher[]> {
-  //   return this.researcherRepository.find({
-  //     where: {
-  //       project: {
-  //         id: projectId,
-  //       },
-  //     },
-  //     relations: ['project'],
-  //   });
-  // }
-
   async update(id: number, updateResearcherDto: UpdateResearcherDto) {
-    
-    const update = await this.researcherRepository.update(id, updateResearcherDto);
+    const update = await this.researchRepository.update(id, updateResearcherDto);
     return update;
   }
 
   async remove(id: number) {
-    const deletion = await this.researcherRepository.delete(id);
+    const deletion = await this.researchRepository.delete(id);
     return deletion
   }
 }

@@ -29,10 +29,10 @@ export class ProjectsService {
   }
 
 
-  async update(id: number, updateProjectDto: UpdateProjectDto){
-
-    const update = await this.projectRepository.update(id, updateProjectDto);
-    return update;
+  async update(id: number, updatedProject: UpdateProjectDto): Promise<Project> {
+    const project = await this.projectRepository.findOne({ where: { id: id } });
+    project.status = updatedProject.status; // Update the status property
+    return this.projectRepository.save(project);
   }
 
   async remove(id: number) {
